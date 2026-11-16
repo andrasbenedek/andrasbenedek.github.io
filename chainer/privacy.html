@@ -13,12 +13,13 @@
 </header>
 <main>
   <h1>Chainer privacy policy</h1>
-  <p class="meta">Last updated 5 November 2026</p>
+  <p class="meta">Last updated 16 November 2026</p>
 
   <div class="summary">
     <p><strong>In short:</strong></p>
     <ul>
-      <li>The game has no accounts and works offline. Your progress is saved on your phone, and Android may back it up to your Google account unless you turn backup off.</li>
+      <li>The game works offline and needs no account. Your progress is saved on your phone, and Android may back it up to your Google account unless you turn backup off.</li>
+      <li>Cloud save is optional. If you sign in with Google, your account's email and identifier and a copy of your progress are stored with Google's Firebase until you delete them, which you can do in settings or on the <a href="/chainer/delete-account.html">account deletion page</a>.</li>
       <li>Crash reports and gameplay statistics are sent only if you tap <span class="ui">SHARE</span> when the game asks. You can turn this off at any time in settings.</li>
       <li>The free version shows ads from Google AdMob. In the EU, the UK and Switzerland, Google asks for your consent first. Owners of the ad-free pack get no ads, and the ad software never starts for them.</li>
       <li>No data is sold.</li>
@@ -45,12 +46,12 @@
         <li>the game's version and your platform;</li>
         <li>the map, wave and lives if you send it during a run;</li>
         <li>a replay of the run you are playing, or of the last run since you opened the game: the moves you made in it (the links you placed, the routes you drew, the waves you started) and when, so the developer can play the run again. It holds nothing about you or your phone;</li>
-        <li>your save files (progress, settings, the ad-free pack status, the cloud-save sync record and the copies cloud-save conflicts replaced);</li>
+        <li>your save files (progress, settings, the ad-free pack status, the cloud-save sync records, which hold your cloud-save account's identifier, and the copies cloud-save conflicts replaced);</li>
         <li>the game's last 20 errors.</li>
       </ul>
     </li>
   </ul>
-  <p>The game does not send your name, email or other identifying details to Sentry unless you type them into feedback. Data is stored in the EU (Germany) and kept for 30 days.</p>
+  <p>The game does not send your name, email or other identifying details to Sentry unless you type them into feedback. The one exception is cloud save: a feedback report sent from a phone that is signed in carries that cloud-save account's identifier in its save files, which I could match to the account's email. Data is stored in the EU (Germany) and kept for 30 days.</p>
   <p>If diagnostics are off, the button reads <span class="ui">copy a feedback report</span> and copies the report to your clipboard instead. You decide where to paste it, for example into an email to the address above.</p>
 
   <h3>PostHog: gameplay statistics</h3>
@@ -76,11 +77,18 @@
   <p><strong>Legal basis:</strong> performing the contract for the pack (Article 6(1)(b) GDPR).</p>
 
   <h2>Cloud save</h2>
-  <p>If you tap <span class="ui">SIGN IN</span> under <span class="ui">CLOUD SAVE</span> in settings, your progress is copied to Saved Games in your Google Play Games account, so it can move to another phone. It is stored by Google under its privacy policy. You can delete it from the Play Games app's settings. Nothing is uploaded unless you sign in. If two phones both played before syncing, the one with more progress is kept, and the game keeps a copy of the other on this phone, one for each time it happens, which is not uploaded to Play Games.</p>
+  <p>Cloud save copies your progress to the cloud so it can move to another phone or survive a reinstall. Nothing is uploaded, and no account exists, unless you tap <span class="ui">SIGN IN WITH GOOGLE</span> under <span class="ui">CLOUD SAVE</span> in settings and pick a Google account. It uses Firebase, a Google service (Google Ireland Limited in the EEA, Google LLC elsewhere), acting for me as processor:</p>
+  <ul>
+    <li><strong>Firebase Authentication</strong> creates a Chainer account linked to your Google account. It holds your Google account's identifier, your email address, and the name and profile picture link your Google account gives, with the times the account was created and last signed in. Settings shows the email so you know which account is signed in. To prevent abuse, Firebase also logs your IP address and your phone's user-agent string when you sign in, and keeps them for a few weeks. Firebase Authentication runs only in Google's data centres in the United States.</li>
+    <li><strong>Cloud Firestore</strong> stores one copy of your progress, the same save the game keeps on your phone (no settings, no purchase status), under your account's identifier. Like every save file, it names the random identifier the game gave the phone that saved it last. It is stored in the EU (Google's <em>eur3</em> region, Belgium and the Netherlands).</li>
+  </ul>
+  <p>The game syncs when it starts, after each run, when you take the daily satchel, when you sign in and when you leave it: it uploads your progress, or downloads the cloud copy when another phone has saved more. If two phones both played before syncing, the one with more progress is kept, and the game keeps a copy of the other on this phone, one for each time it happens, which is never uploaded.</p>
+  <p><strong>Signing out:</strong> <span class="ui">SIGN OUT</span> stops syncing on this phone. Your progress on the phone and the cloud copy both stay, and signing in again picks the copy up.</p>
+  <p><strong>Deleting:</strong> <span class="ui">DELETE CLOUD SAVE</span> in settings, then <span class="ui">DELETE</span>, deletes the cloud copy and your Chainer account. Progress on the phone stays. Sign out on your other phones first: a phone that is still signed in can upload a new copy for up to an hour, and if one does, write to me and I will delete it. If you no longer have the game, the <a href="/chainer/delete-account.html">account deletion page</a> explains how to ask me to delete them. Deleting your Chainer account does not touch your Google account.</p>
   <p><strong>Legal basis:</strong> providing the feature you asked for (Article 6(1)(b) GDPR).</p>
 
   <h2>Android backup</h2>
-  <p>Android's own backup service (Auto Backup) copies the game's saved files to the Google Drive storage of the Google account on your phone: your progress and a spare copy of it, your settings, whether you own the ad-free pack, the cloud-save sync record, and the copies cloud-save conflicts replaced. It may also copy the small settings files that the ad, purchase and statistics software keep on the phone, such as your answer to Google's consent form. It never copies the random identifier the game gives this installation, so a phone restored from a backup gets a new one.</p>
+  <p>Android's own backup service (Auto Backup) copies the game's saved files to the Google Drive storage of the Google account on your phone: your progress and a spare copy of it, your settings, whether you own the ad-free pack, the cloud-save sync records, which hold your cloud-save account's identifier, and the copies cloud-save conflicts replaced. It may also copy the small settings files that the ad, purchase and statistics software keep on the phone, such as your answer to Google's consent form. It never copies the file holding the random identifier the game gives this installation, so a phone restored from a backup gets a new one; the progress file names the identifier of the phone that saved it last.</p>
   <p>Android makes the backup about once a day, while the phone is idle, charging and on Wi-Fi. When you reinstall the game, or set up a new phone with the same Google account, Android puts the files back, so your progress is not lost. Google stores the backup encrypted, under its privacy policy. I never receive it and cannot see it.</p>
   <p>To turn backup off, open your phone's <em>Settings → Google → Backup</em> (on some phones, <em>Settings → System → Backup</em>) and switch it off. This stops the backup for every app on the phone, not only Chainer, and a reinstall then starts the game from the beginning. To delete a backup that already exists, open the Google Drive app, go to <em>Backups</em> and delete this phone's backup.</p>
 
@@ -96,7 +104,9 @@
         <tr><td>Gameplay statistics (PostHog)</td><td>up to 1 year</td></tr>
         <tr><td>Purchase record (RevenueCat)</td><td>while the purchase needs to work, or until you ask for deletion</td></tr>
         <tr><td>Advertising data (Google)</td><td>under Google's retention rules</td></tr>
-        <tr><td>Cloud save (Google Play Games)</td><td>until you delete it</td></tr>
+        <tr><td>Cloud save copy of your progress (Firebase, EU)</td><td>until you delete it; deleted from the database at once, and I keep no backups of it</td></tr>
+        <tr><td>Cloud save account: identifier, email, name, picture link (Firebase, US)</td><td>until you delete it, then removed from Google's systems and backups within 180 days</td></tr>
+        <tr><td>Sign-in IP address and user agent (Firebase, US)</td><td>a few weeks</td></tr>
         <tr><td>Android backup (Google Drive)</td><td>until you delete it, under Google's retention rules</td></tr>
         <tr><td>Emails you send me</td><td>as long as needed to answer, then deleted within a year</td></tr>
       </tbody>
@@ -104,7 +114,7 @@
   </div>
 
   <h2>Transfers outside the EU</h2>
-  <p>Sentry and PostHog store the game's data in the EU. RevenueCat and Google may process data in the United States. Where data leaves the European Economic Area, it is protected by the EU–US Data Privacy Framework or by the European Commission's Standard Contractual Clauses, whichever the provider uses.</p>
+  <p>Sentry and PostHog store the game's data in the EU, and so does cloud save's copy of your progress. RevenueCat and Google may process data in the United States, and the cloud-save account is always held there, since Firebase Authentication runs only in the US. Where data leaves the European Economic Area, it is protected by the EU–US Data Privacy Framework or by the European Commission's Standard Contractual Clauses, whichever the provider uses.</p>
 
   <h2>Your rights</h2>
   <p>Under the GDPR you can:</p>
@@ -115,7 +125,7 @@
     <li>receive your data in a portable form;</li>
     <li>withdraw your consent at any time.</li>
   </ul>
-  <p>Write to <a href="mailto:the.chainer.game@gmail.com">the.chainer.game@gmail.com</a>. The game has no accounts, so tell me roughly when you played or sent feedback, and I will find and delete what I can. I will reply within one month.</p>
+  <p>Write to <a href="mailto:the.chainer.game@gmail.com">the.chainer.game@gmail.com</a>. If you used cloud save, write from the email address of the Google account you signed in with, so I can find your account; for anything else, tell me roughly when you played or sent feedback, and I will find and delete what I can. I will reply within one month.</p>
   <p>You can also complain to a data protection authority: in Hungary, the <a href="https://naih.hu">Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</a>, or the authority where you live.</p>
 
   <h2>Children</h2>
@@ -133,6 +143,7 @@
 <footer>
   <a href="/">Home</a>
   <a href="/chainer/terms.html">Terms</a>
+  <a href="/chainer/delete-account.html">Delete account</a>
   <a href="mailto:the.chainer.game@gmail.com">Contact</a>
   <p>© 2026 András Benedek</p>
 </footer>
