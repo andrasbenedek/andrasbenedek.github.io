@@ -13,14 +13,14 @@
 </header>
 <main>
   <h1>Delete your Chainer account</h1>
-  <p class="meta">Chainer, a game by András Benedek · Last updated 16 November 2026</p>
+  <p class="meta">Chainer, a game by András Benedek · Last updated 17 November 2026</p>
 
-  <p>Chainer has an account only if you signed in to cloud save with <span class="ui">SIGN IN WITH GOOGLE</span>. Deleting it removes your Chainer account and the cloud copy of your progress. It never touches your Google account.</p>
+  <p>Chainer has an account only if you signed in to cloud save with <span class="ui">SIGN IN WITH GOOGLE</span>. Deleting it removes your Chainer account, the cloud copy of your progress and your invite records. It never touches your Google account.</p>
 
   <h2>In the game</h2>
   <ol>
     <li>Open <span class="ui">SETTINGS</span> and find <span class="ui">CLOUD SAVE</span>. If it reads <em>not signed in</em>, tap <span class="ui">SIGN IN WITH GOOGLE</span> and pick the account first; this syncs your progress once. Or write to me instead, below.</li>
-    <li>If you play on other phones with the same Google account, tap <span class="ui">SIGN OUT</span> on each of them first. A phone that is still signed in can upload a new copy for up to an hour.</li>
+    <li>If you play on other phones with the same Google account, tap <span class="ui">SIGN OUT</span> on each of them first. A phone that is still signed in can upload a new copy, or make a new invite code, for up to an hour.</li>
     <li>Tap <span class="ui">DELETE CLOUD SAVE</span>, then <span class="ui">DELETE</span>. Google may ask you to pick your account once more to confirm it is you.</li>
   </ol>
   <p>Settings then reads <em>not signed in</em>. Your progress on the phone stays, so you can keep playing. If a phone you did not sign out uploaded a copy afterwards, write to me and I will delete it.</p>
@@ -34,6 +34,8 @@
       <thead><tr><th>Data</th><th>What happens</th></tr></thead>
       <tbody>
         <tr><td>The cloud copy of your progress</td><td>deleted from the database at once; I keep no backups of it</td></tr>
+        <tr><td>Your invite code, each friend's record under it (their account identifier and whether they completed road 5), and the record of the code you entered</td><td>deleted from the database at once; I keep no backups of them</td></tr>
+        <tr><td>A friend's own record that they entered your code</td><td>kept, as the friend's; it holds the code alone, which then belongs to no account</td></tr>
         <tr><td>Your Chainer account: Google account identifier, email, name and picture link</td><td>deleted at once, then removed from Google's systems and backups within 180 days</td></tr>
         <tr><td>Sign-in IP addresses and user agents logged by Firebase</td><td>kept a few weeks for abuse prevention, then deleted</td></tr>
         <tr><td>Progress on your phone</td><td>kept; uninstall the game or clear its data to delete it</td></tr>

@@ -13,13 +13,13 @@
 </header>
 <main>
   <h1>Chainer privacy policy</h1>
-  <p class="meta">Last updated 16 November 2026</p>
+  <p class="meta">Last updated 17 November 2026</p>
 
   <div class="summary">
     <p><strong>In short:</strong></p>
     <ul>
       <li>The game works offline and needs no account. Your progress is saved on your phone, and Android may back it up to your Google account unless you turn backup off.</li>
-      <li>Cloud save is optional. If you sign in with Google, your account's email and identifier and a copy of your progress are stored with Google's Firebase until you delete them, which you can do in settings or on the <a href="/chainer/delete-account.html">account deletion page</a>.</li>
+      <li>Cloud save is optional. If you sign in with Google, your account's email and identifier, a copy of your progress and your invite records (your invite code, and which accounts used it) are stored with Google's Firebase until you delete them, which you can do in settings or on the <a href="/chainer/delete-account.html">account deletion page</a>.</li>
       <li>Crash reports and gameplay statistics are sent only if you tap <span class="ui">SHARE</span> when the game asks. You can turn this off at any time in settings.</li>
       <li>The free version shows ads from Google AdMob. In the EU, the UK and Switzerland, Google asks for your consent first. Owners of the ad-free pack get no ads, and the ad software never starts for them.</li>
       <li>No data is sold.</li>
@@ -51,13 +51,13 @@
       </ul>
     </li>
   </ul>
-  <p>The game does not send your name, email or other identifying details to Sentry unless you type them into feedback. The one exception is cloud save: a feedback report sent from a phone that is signed in carries that cloud-save account's identifier in its save files, which I could match to the account's email. Data is stored in the EU (Germany) and kept for 30 days.</p>
+  <p>The game does not send your name, email or other identifying details to Sentry unless you type them into feedback. The one exception is cloud save: a feedback report sent from a phone that is signed in carries that cloud-save account's identifier in its save files, which I could match to the account's email, and so does the progress file of a player who received an invite satchel, for each friend it came from (see Invites, below). Data is stored in the EU (Germany) and kept for 30 days.</p>
   <p>If diagnostics are off, the button reads <span class="ui">copy a feedback report</span> and copies the report to your clipboard instead. You decide where to paste it, for example into an email to the address above.</p>
 
   <h3>PostHog: gameplay statistics</h3>
   <p>PostHog (PostHog, Inc.) receives:</p>
   <ul>
-    <li><strong>Gameplay events.</strong> For example: a run started, finished or was abandoned, and its map, waves, lives and duration; a chain built; a talent, boost or chain finish bought with in-game currency; a tutorial step reached or skipped; an ad shown; the ad-free pack viewed or bought.</li>
+    <li><strong>Gameplay events.</strong> For example: a run started, finished or was abandoned, and its map, waves, lives and duration; a chain built; a talent, boost or chain finish bought with in-game currency; a tutorial step reached or skipped; an ad shown; the ad-free pack viewed or bought; an invite shared, a friend's code entered, and an invite satchel earned.</li>
     <li><strong>App opened and app moved to the background.</strong></li>
     <li><strong>Device and installation details.</strong> A random identifier the analytics software creates for this installation, your phone model, the Android version, the game's version and your language. PostHog also uses your IP address to estimate your country and city.</li>
   </ul>
@@ -82,9 +82,16 @@
     <li><strong>Firebase Authentication</strong> creates a Chainer account linked to your Google account. It holds your Google account's identifier, your email address, and the name and profile picture link your Google account gives, with the times the account was created and last signed in. Settings shows the email so you know which account is signed in. To prevent abuse, Firebase also logs your IP address and your phone's user-agent string when you sign in, and keeps them for a few weeks. Firebase Authentication runs only in Google's data centres in the United States.</li>
     <li><strong>Cloud Firestore</strong> stores one copy of your progress, the same save the game keeps on your phone (no settings, no purchase status), under your account's identifier. Like every save file, it names the random identifier the game gave the phone that saved it last. It is stored in the EU (Google's <em>eur3</em> region, Belgium and the Netherlands).</li>
   </ul>
-  <p>The game syncs when it starts, after each run, when you take the daily satchel, when you sign in and when you leave it: it uploads your progress, or downloads the cloud copy when another phone has saved more. If two phones both played before syncing, the one with more progress is kept, and the game keeps a copy of the other on this phone, one for each time it happens, which is never uploaded.</p>
+  <p><strong>Invites:</strong> <span class="ui">INVITE</span> on the home screen gives a signed-in player a six-character invite code to share with friends. When a friend who entered your code completes road 5, you each get a satchel of gems. For this, Cloud Firestore, in the same EU region, stores:</p>
+  <ul>
+    <li>your invite code, with your account's identifier;</li>
+    <li>for each friend who entered your code, their account's identifier and whether they have completed road 5;</li>
+    <li>if you entered a friend's code, that code.</li>
+  </ul>
+  <p>No name or email is stored with them. The game shows you only how many players used your code and how many completed road 5, never who, and it never shows a friend your account either. So that a second phone does not pay the same satchel twice, your progress also records the account identifier of each friend whose invite satchel you received; it travels with your progress, in the cloud copy, the Android backup and a feedback report's save files.</p>
+  <p>The game syncs when it starts, after each run, when you take the daily satchel, when you open the invite screen, when you sign in and when you leave it: it uploads your progress, or downloads the cloud copy when another phone has saved more. If two phones both played before syncing, the one with more progress is kept, and the game keeps a copy of the other on this phone, one for each time it happens, which is never uploaded.</p>
   <p><strong>Signing out:</strong> <span class="ui">SIGN OUT</span> stops syncing on this phone. Your progress on the phone and the cloud copy both stay, and signing in again picks the copy up.</p>
-  <p><strong>Deleting:</strong> <span class="ui">DELETE CLOUD SAVE</span> in settings, then <span class="ui">DELETE</span>, deletes the cloud copy and your Chainer account. Progress on the phone stays. Sign out on your other phones first: a phone that is still signed in can upload a new copy for up to an hour, and if one does, write to me and I will delete it. If you no longer have the game, the <a href="/chainer/delete-account.html">account deletion page</a> explains how to ask me to delete them. Deleting your Chainer account does not touch your Google account.</p>
+  <p><strong>Deleting:</strong> <span class="ui">DELETE CLOUD SAVE</span> in settings, then <span class="ui">DELETE</span>, deletes your invite records, the cloud copy and your Chainer account: your code, every friend's record under it, and the record that you used a friend's code. Progress on the phone stays. A friend's own record that they entered a code keeps that code, which then belongs to no account. Sign out on your other phones first: a phone that is still signed in can upload a new copy, or make a new invite code, for up to an hour, and if one does, write to me and I will delete it. If you no longer have the game, the <a href="/chainer/delete-account.html">account deletion page</a> explains how to ask me to delete them. Deleting your Chainer account does not touch your Google account.</p>
   <p><strong>Legal basis:</strong> providing the feature you asked for (Article 6(1)(b) GDPR).</p>
 
   <h2>Android backup</h2>
@@ -105,6 +112,7 @@
         <tr><td>Purchase record (RevenueCat)</td><td>while the purchase needs to work, or until you ask for deletion</td></tr>
         <tr><td>Advertising data (Google)</td><td>under Google's retention rules</td></tr>
         <tr><td>Cloud save copy of your progress (Firebase, EU)</td><td>until you delete it; deleted from the database at once, and I keep no backups of it</td></tr>
+        <tr><td>Invite records: your code, your friends' account identifiers and whether they completed road 5, the code you entered (Firebase, EU)</td><td>until you delete your cloud save; deleted from the database at once, and I keep no backups of them</td></tr>
         <tr><td>Cloud save account: identifier, email, name, picture link (Firebase, US)</td><td>until you delete it, then removed from Google's systems and backups within 180 days</td></tr>
         <tr><td>Sign-in IP address and user agent (Firebase, US)</td><td>a few weeks</td></tr>
         <tr><td>Android backup (Google Drive)</td><td>until you delete it, under Google's retention rules</td></tr>
