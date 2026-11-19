@@ -13,13 +13,13 @@
 </header>
 <main>
   <h1>Chainer privacy policy</h1>
-  <p class="meta">Last updated 17 November 2026</p>
+  <p class="meta">Last updated 20 November 2026</p>
 
   <div class="summary">
     <p><strong>In short:</strong></p>
     <ul>
       <li>The game works offline and needs no account. Your progress is saved on your phone, and Android may back it up to your Google account unless you turn backup off.</li>
-      <li>Cloud save is optional. If you sign in with Google, your account's email and identifier, a copy of your progress and your invite records (your invite code, and which accounts used it) are stored with Google's Firebase until you delete them, which you can do in settings or on the <a href="/chainer/delete-account.html">account deletion page</a>.</li>
+      <li>Cloud save is optional. If you sign in with Google, your account's email and identifier, a copy of your progress and your invite records (your invite code, and which accounts used it) are stored with Google's Firebase until you delete them, which you can do in settings or on the <a href="/chainer/delete-account.html">account deletion page</a>. Your best endless wave on each road is shown publicly on that road's board under a name the game makes up, unless you switch it off.</li>
       <li>Crash reports and gameplay statistics are sent only if you tap <span class="ui">SHARE</span> when the game asks. You can turn this off at any time in settings.</li>
       <li>The free version shows ads from Google AdMob. In the EU, the UK and Switzerland, Google asks for your consent first. Owners of the ad-free pack get no ads, and the ad software never starts for them.</li>
       <li>No data is sold.</li>
@@ -46,7 +46,7 @@
         <li>the game's version and your platform;</li>
         <li>the map, wave and lives if you send it during a run;</li>
         <li>a replay of the run you are playing, or of the last run since you opened the game: the moves you made in it (the links you placed, the routes you drew, the waves you started) and when, so the developer can play the run again. It holds nothing about you or your phone;</li>
-        <li>your save files (progress, settings, the ad-free pack status, the cloud-save sync records, which hold your cloud-save account's identifier, and the copies cloud-save conflicts replaced);</li>
+        <li>your save files (progress, settings, the ad-free pack status, the cloud-save sync and board records, which hold your cloud-save account's identifier and the waves you posted, and the copies cloud-save conflicts replaced);</li>
         <li>the game's last 20 errors.</li>
       </ul>
     </li>
@@ -89,13 +89,20 @@
     <li>if you entered a friend's code, that code.</li>
   </ul>
   <p>No name or email is stored with them. The game shows you only how many players used your code and how many completed road 5, never who, and it never shows a friend your account either. So that a second phone does not pay the same satchel twice, your progress also records the account identifier of each friend whose invite satchel you received; it travels with your progress, in the cloud copy, the Android backup and a feedback report's save files.</p>
+  <p><strong>Endless boards:</strong> each road's endless mode has a public board, which anyone playing the game can read, signed in or not. While you are signed in, your best endless wave on each road is posted to that road's board, and posted again whenever it rises. For this, Cloud Firestore, in the same EU region, stores:</p>
+  <ul>
+    <li>for each road you have a best on, an entry with your best wave, the time the server received it, and your board name;</li>
+    <li>a random board identifier, with your account's identifier, so that only you can change your entries;</li>
+    <li>your board name, whether you chose to be shown, and which roads you have an entry on, under your account's identifier.</li>
+  </ul>
+  <p>Your board name is made up by the game from its own word lists and four digits, such as <em>Ashen Warden 4821</em>; you can draw another in settings, but never type one. Other players see only that name, your wave and your rank, never your email, your Google name or your account. <em>show me on the boards</em> in settings takes every entry of yours down at once when you switch it off, and puts your bests back when you switch it on. If a score is impossible, or a name should not stand, I may take your entries down and stop your account from posting; your own phone still shows your best.</p>
   <p>The game syncs when it starts, after each run, when you take the daily satchel, when you open the invite screen, when you sign in and when you leave it: it uploads your progress, or downloads the cloud copy when another phone has saved more. If two phones both played before syncing, the one with more progress is kept, and the game keeps a copy of the other on this phone, one for each time it happens, which is never uploaded.</p>
-  <p><strong>Signing out:</strong> <span class="ui">SIGN OUT</span> stops syncing on this phone. Your progress on the phone and the cloud copy both stay, and signing in again picks the copy up.</p>
-  <p><strong>Deleting:</strong> <span class="ui">DELETE CLOUD SAVE</span> in settings, then <span class="ui">DELETE</span>, deletes your invite records, the cloud copy and your Chainer account: your code, every friend's record under it, and the record that you used a friend's code. Progress on the phone stays. A friend's own record that they entered a code keeps that code, which then belongs to no account. Sign out on your other phones first: a phone that is still signed in can upload a new copy, or make a new invite code, for up to an hour, and if one does, write to me and I will delete it. If you no longer have the game, the <a href="/chainer/delete-account.html">account deletion page</a> explains how to ask me to delete them. Deleting your Chainer account does not touch your Google account.</p>
+  <p><strong>Signing out:</strong> <span class="ui">SIGN OUT</span> stops syncing on this phone. Your progress on the phone, the cloud copy and your board entries stay, and signing in again picks the copy up.</p>
+  <p><strong>Deleting:</strong> <span class="ui">DELETE CLOUD SAVE</span> in settings, then <span class="ui">DELETE</span>, deletes your board entries, your invite records, the cloud copy and your Chainer account: every entry of yours on the endless boards with your board identifier and name, your code, every friend's record under it, and the record that you used a friend's code. Progress on the phone stays. A friend's own record that they entered a code keeps that code, which then belongs to no account. Sign out on your other phones first: a phone that is still signed in can upload a new copy, make a new invite code or post a best, for up to an hour, and if one does, write to me and I will delete it. If you no longer have the game, the <a href="/chainer/delete-account.html">account deletion page</a> explains how to ask me to delete them. Deleting your Chainer account does not touch your Google account.</p>
   <p><strong>Legal basis:</strong> providing the feature you asked for (Article 6(1)(b) GDPR).</p>
 
   <h2>Android backup</h2>
-  <p>Android's own backup service (Auto Backup) copies the game's saved files to the Google Drive storage of the Google account on your phone: your progress and a spare copy of it, your settings, whether you own the ad-free pack, the cloud-save sync records, which hold your cloud-save account's identifier, and the copies cloud-save conflicts replaced. It may also copy the small settings files that the ad, purchase and statistics software keep on the phone, such as your answer to Google's consent form. It never copies the file holding the random identifier the game gives this installation, so a phone restored from a backup gets a new one; the progress file names the identifier of the phone that saved it last.</p>
+  <p>Android's own backup service (Auto Backup) copies the game's saved files to the Google Drive storage of the Google account on your phone: your progress and a spare copy of it, your settings, whether you own the ad-free pack, the cloud-save sync and board records, which hold your cloud-save account's identifier and the waves you posted, and the copies cloud-save conflicts replaced. It may also copy the small settings files that the ad, purchase and statistics software keep on the phone, such as your answer to Google's consent form. It never copies the file holding the random identifier the game gives this installation, so a phone restored from a backup gets a new one; the progress file names the identifier of the phone that saved it last.</p>
   <p>Android makes the backup about once a day, while the phone is idle, charging and on Wi-Fi. When you reinstall the game, or set up a new phone with the same Google account, Android puts the files back, so your progress is not lost. Google stores the backup encrypted, under its privacy policy. I never receive it and cannot see it.</p>
   <p>To turn backup off, open your phone's <em>Settings → Google → Backup</em> (on some phones, <em>Settings → System → Backup</em>) and switch it off. This stops the backup for every app on the phone, not only Chainer, and a reinstall then starts the game from the beginning. To delete a backup that already exists, open the Google Drive app, go to <em>Backups</em> and delete this phone's backup.</p>
 
@@ -113,6 +120,7 @@
         <tr><td>Advertising data (Google)</td><td>under Google's retention rules</td></tr>
         <tr><td>Cloud save copy of your progress (Firebase, EU)</td><td>until you delete it; deleted from the database at once, and I keep no backups of it</td></tr>
         <tr><td>Invite records: your code, your friends' account identifiers and whether they completed road 5, the code you entered (Firebase, EU)</td><td>until you delete your cloud save; deleted from the database at once, and I keep no backups of them</td></tr>
+        <tr><td>Endless board entries, your board identifier and name (Firebase, EU)</td><td>until you switch <em>show me on the boards</em> off (the entries) or delete your cloud save (all of it); deleted from the database at once, and I keep no backups of them</td></tr>
         <tr><td>Cloud save account: identifier, email, name, picture link (Firebase, US)</td><td>until you delete it, then removed from Google's systems and backups within 180 days</td></tr>
         <tr><td>Sign-in IP address and user agent (Firebase, US)</td><td>a few weeks</td></tr>
         <tr><td>Android backup (Google Drive)</td><td>until you delete it, under Google's retention rules</td></tr>
